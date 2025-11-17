@@ -161,8 +161,8 @@ def train_teacher(model_fusion, model_ts, train_loader, test_loader, device, epo
 
 if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    path1 = r"SDTW/incipient_traindata.npy"
-    path2 = r"SDTW/severe_traindata.npy"
+    path1 = r"SDTW/incipient_data.npy"
+    path2 = r"SDTW/severe_data.npy"
     batch_size = 32
     epochs = 20
     lr = 1e-4
@@ -174,3 +174,4 @@ if __name__ == "__main__":
     model_fusion = CrossAttentionGateFusion(embed_dim=512, num_heads=4)
 
     train_teacher(model_fusion, model_ts, train_loader, test_loader, device, epochs, lr)
+
