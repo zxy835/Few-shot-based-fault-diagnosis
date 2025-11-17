@@ -13,19 +13,13 @@ class FaultDataset(Dataset):
     def __getitem__(self, idx):
         return self.data[idx], self.labels[idx]
 
-def load_data(path1, path2, seed=20):
-    if seed is not None:
-        np.random.seed(seed)
+def load_data(path1, path2):
+
 
     incipient = np.load(path1)
     severe = np.load(path2)
 
     assert incipient.shape[0] == severe.shape[0], "两个数据样本数不一致"
-
-    perm = np.random.permutation(incipient.shape[0])
-
-    incipient = incipient[perm]
-    severe = severe[perm]
 
     labels = incipient[:, 0, -1].astype(np.int64) - 1
     incipient_data = incipient[:, :, :30]
@@ -72,5 +66,6 @@ def get_valdataloader(path3, batch_size=32):
 
     dataset = FaultDataset(data_tensor, label_tensor)
     loader = DataLoader(dataset, batch_size=batch_size, shuffle=False)
+
 
     return loader
