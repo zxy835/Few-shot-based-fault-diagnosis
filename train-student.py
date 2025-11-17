@@ -200,8 +200,8 @@ def train_student(model_fusion, model_ts, model_ts1, train_loader, test_loader, 
 
 if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    path1 = r"SDTW/incipient_traindata.npy"
-    path2 = r"SDTW/severe_traindata.npy"
+    path1 = r"SDTW/incipient_data.npy"
+    path2 = r"SDTW/severe_data.npy"
     path3 = r"checkpoints/teacher_best_model.pth"
 
     batch_size = 32
@@ -229,4 +229,5 @@ if __name__ == "__main__":
     model_fusion.train()
 
     train_student(model_fusion, model_ts, model_ts1, train_loader, test_loader, device, epochs, lr)
+
 
