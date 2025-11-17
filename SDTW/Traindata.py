@@ -56,7 +56,8 @@ for i in range (num):
     print(i+1, '/', num)
 traindata = np.array(traindata)
 severedata = np.array(severedata)
-np.save(r'sim_traindata.npy', traindata)
-np.save(r'severe_traindata.npy', severedata)
+np.save(r'incipient_data.npy', traindata)
+np.save(r'severe_data.npy', severedata)
+
 
 
